@@ -1,0 +1,56 @@
+<h5>{{ editMode?"Edit Recipe Wizard":"New Recipe Wizard" }}</h5>
+<hr>
+<form (ngSubmit)="onSubmit()" [formGroup]="recipeform">
+    <div class="col form-group">
+        <label for="url" class="form-label">Image URL</label>
+        <input type="text" id="url" class="form-control" name="url" formControlName="url" #imageUrl>
+        <div 
+        style="color: red;"
+        *ngIf="!recipeform.get('url').valid && recipeform.get('url').touched">
+            Invalid Input!
+        </div>
+    </div>
+    <div class="form-control">
+        <img [src]="imageUrl.value" class="img-fluid">
+    </div>
+    <div class="col form-group mt-2">
+        <label for="name" class="form-label">Recipe Name</label>
+        <input type="text" id="name" class="form-control" name="name" formControlName="name">
+        <div 
+        style="color: red;"
+        *ngIf="!recipeform.get('name').valid && recipeform.get('name').touched">
+            Invalid Input!
+        </div>
+    </div>
+    <div class="col form-group mt-2">
+        <label for="description" class="form-label">Recipe Description</label>
+        <textarea id="description" name="description" class="form-control" formControlName="description"></textarea>
+        <div 
+        style="color: red;"
+        *ngIf="!recipeform.get('description').valid && recipeform.get('description').touched">
+            Invalid Input!
+        </div>
+    </div>
+    <div class="col form-group mt-2">
+        <label for="ingrediants" class="form-label">Ingrediants</label>
+        <br>
+        <div formArrayName="ingrediants" class="mt-2">
+            <div class="row" *ngFor="let control of controls; let i=index" [formGroupName]="i">
+                <div class="col-8 mt-2">
+                    <input type="text" id="ingname" name="ingname" class="form-control" formControlName="ingname">
+                </div>
+                <div class="col-2 mt-2">
+                    <input type="number" id="amount" class="form-control" formControlName="amount">
+                </div>
+                <div class="col-2 mt-2">
+                    <button class="btn btn-danger"(click)="deleteIng(i)">X</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-2" type="button" (click)="onAdd()">Add Ingrediant</button>
+    <br>
+    <hr>
+    <button type="submit" class="btn btn-success mt-2" [disabled]="!recipeform.valid">{{editMode?"Save Change":"Add Recipe"}}</button>
+    <button type="button" class="btn btn-primary mt-2 mx-2" (click)="onCancel()">Cancel</button>
+</form>

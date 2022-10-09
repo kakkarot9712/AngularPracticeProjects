@@ -1,0 +1,23 @@
+<!-- <div class="card" style="width: 32rem;" >
+    <img [src]="recipes[Index].imagePath" class="card-img-top" alt="{{ recipes[Index].name }}">
+    <div class="card-body">
+        <h5 class="card-title">{{recipes[Index].name}}</h5>
+        <p class="card-text">{{recipes[Index].description}}</p>
+        <a class="btn btn-primary" [routerLink]="[Index]"[routerLinkActive]="">{{ btnInfo }}</a>
+    </div>
+</div> -->
+<!--  -->
+
+<div class="list-group">
+    <a class="list-group-item list-group-item-action mb-2" [routerLink]="[Index]" routerLinkActive="active"
+        aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <div>
+                <h5 class="mb-1">{{recipes[Index].name}}</h5>
+                <p class="mb-1">{{recipes[Index].description}}</p>
+            </div>
+            <img [src]="recipes[Index].imagePath" class="card-img-top" alt="{{ recipes[Index].name }}"
+                style="width: 80px; height: 55px;">
+        </div>
+    </a>
+</div>

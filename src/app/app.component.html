@@ -1,0 +1,18 @@
+<!-- <app-header (nav-event)="setLoc($event)"></app-header>
+ <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-recipe-book *ngIf="location === 'recipe'"></app-recipe-book>
+            <app-shopping-list *ngIf="location === 'shopping'"></app-shopping-list>
+        </div>
+    </div>
+ </div> -->
+
+ <app-header></app-header>
+ <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+ </div>

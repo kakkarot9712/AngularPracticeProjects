@@ -1,0 +1,27 @@
+<!-- <div class="row">
+    <div class="col-md-5">
+        <app-recipe-list></app-recipe-list>
+    </div>
+    <div class="col-md-7">
+        <app-recipe-details *ngIf="showDet(); else EmptyText" [inpDet]="pass"></app-recipe-details>
+        <ng-template #EmptyText>
+            <p>
+                Click on 'More info' button to view recipe Details!
+            </p>
+        </ng-template>
+    </div>
+</div> -->
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success mt-3" [routerLink]="['new']">New Recipe</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-5">
+        <app-recipe-list></app-recipe-list>
+    </div>
+    <div class="col-md-7">
+        <router-outlet></router-outlet>
+    </div>
+</div>
