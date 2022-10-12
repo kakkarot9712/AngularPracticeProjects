@@ -6,14 +6,14 @@ import { Directive, Input, HostListener} from "@angular/core";
 
 export class DropdownDirective {
     constructor(){}
-    @Input('appDropDown')elemref: HTMLElement;
+    @Input('appDropDown')elem: HTMLElement;
     isOpen = false;
-    @HostListener("click")showMenu(){
-        if(this.isOpen == false){
-            this.elemref.classList.add("show")
+    @HostListener("document:click",['$event.target'])showMenu(target: HTMLElement){
+        if(this.isOpen == false && target === this.elem.previousElementSibling){
+            this.elem.classList.add("show")
         }
         else{
-            this.elemref.classList.remove("show")
+            this.elem.classList.remove("show")
         }
         this.isOpen = !this.isOpen;
     }
